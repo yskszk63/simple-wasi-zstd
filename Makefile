@@ -7,6 +7,14 @@ CFLAGS = --target=wasm32-wasi --sysroot=$(WASM_SYSROOT)
 LDFLAGS = -Wl,--export=malloc -Wl,--export=free -Wl,--export=ZSTD_compress -Wl,--export=ZSTD_decompress -Wl,--no-entry
 SONAME_FLAGS = -nostartfiles
 
+.PHONY: all tests
+
+all: libzstd.mjs
+
+tests:
+	node --experimental-wasi-unstable-preview1 tests/node-test.mjs
+	deno run --unstable tests/deno-test.ts
+
 libzstd.mjs: libzstd.wasm
 	npx wasmto-js < $< > $@
 
