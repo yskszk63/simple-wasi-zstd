@@ -1,17 +1,8 @@
 import WASI from "https://deno.land/std@0.106.0/wasi/snapshot_preview1.ts";
-import { compile } from "../libzstd.mjs";
+// @deno-types="../libzstd.d.ts"
+import { compile, ZstdExports } from "../libzstd.js";
 
 const wasi = new WASI({});
-
-interface Zstd {
-    memory: WebAssembly.Memory;
-    malloc(size: number): number;
-    free(ptr: number): void;
-    ZSTD_compress(dst: number, dstCapacity: number, src: number, srcSize: number, compressionLevel: number): number;
-    ZSTD_decompress(dst: number, dstCapacity: number, src: number, compressedSize: number): number;
-}
-
-type ZstdExports = Zstd & WebAssembly.Exports;
 
 const instance = await WebAssembly.instantiate(await compile(), {
     wasi_snapshot_preview1: wasi.exports,

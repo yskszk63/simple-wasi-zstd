@@ -9,13 +9,13 @@ SONAME_FLAGS = -nostartfiles
 
 .PHONY: all tests
 
-all: libzstd.mjs
+all: libzstd.js
 
 tests:
 	node --experimental-wasi-unstable-preview1 tests/node-test.mjs
 	deno run --unstable tests/deno-test.ts
 
-libzstd.mjs: libzstd.wasm
+libzstd.js: libzstd.wasm
 	npx wasmto-js < $< > $@
 
 libzstd.wasm: zstd/lib/libzstd.so.1.5.0
