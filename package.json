@@ -1,0 +1,27 @@
+{
+  "name": "simple-wasi-zstd",
+  "version": "0.1.0",
+  "description": "Simple zstd library for Node.js / Deno / Browser.",
+  "main": "libzstd.mjs",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yskszk63/simple-wasi-zstd.git"
+  },
+  "keywords": [
+    "zstd",
+    "wasm",
+    "wasi"
+  ],
+  "author": "yskszk63",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yskszk63/simple-wasi-zstd/issues"
+  },
+  "homepage": "https://github.com/yskszk63/simple-wasi-zstd#readme"
+}
