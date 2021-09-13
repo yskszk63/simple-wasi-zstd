@@ -4,7 +4,7 @@ CC = clang
 AR = llvm-ar
 LD = wasm-ld
 CFLAGS = --target=wasm32-wasi --sysroot=$(WASM_SYSROOT)
-LDFLAGS = -Wl,--export=malloc -Wl,--export=free -Wl,--export=ZSTD_compress -Wl,--export=ZSTD_decompress -Wl,--no-entry
+LDFLAGS = -Wl,--export=malloc -Wl,--export=free -Wl,--export=ZSTD_compress -Wl,--export=ZSTD_decompress -Wl,--export=ZSTD_getFrameContentSize -Wl,--no-entry
 SONAME_FLAGS = -nostartfiles
 
 .PHONY: all tests

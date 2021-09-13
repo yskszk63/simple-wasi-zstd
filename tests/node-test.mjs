@@ -5,7 +5,7 @@ const wasi = new WASI({});
 const instance = await WebAssembly.instantiate(await compile(), {
     wasi_snapshot_preview1: wasi.wasiImport,
 });
-const {memory, malloc, free, ZSTD_compress, ZSTD_decompress} = instance.exports;
+const {memory, malloc, free, ZSTD_compress, ZSTD_decompress, ZSTD_getFrameContentSize} = instance.exports;
 const input = "Hello, World!Hello, World!Hello, World!Hello, World!";
 const len = input.length;
 const ptr = malloc(len);
@@ -18,7 +18,7 @@ try {
     try {
         const ret = ZSTD_compress(dstptr, dstlen, ptr, len, 0);
 
-        const dstlen2 = 8 * 1024;
+        const dstlen2 = Number(ZSTD_getFrameContentSize(dstptr, ret));
         const dstptr2 = malloc(dstlen);
         try {
             const ret2 = ZSTD_decompress(dstptr2, dstlen2, dstptr, ret);
