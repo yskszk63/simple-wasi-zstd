@@ -1,11 +1,14 @@
-import { WASI } from "wasi";
-import { compile } from "simple-wasi-zstd";
+import WASI from "https://deno.land/std@0.106.0/wasi/snapshot_preview1.ts";
+import { compile, ZstdExports } from "https://cdn.skypack.dev/simple-wasi-zstd?dts";
+
 const wasi = new WASI({});
 
 const instance = await WebAssembly.instantiate(await compile(), {
-    wasi_snapshot_preview1: wasi.wasiImport,
+    wasi_snapshot_preview1: wasi.exports,
 });
-const {memory, malloc, free, ZSTD_compress, ZSTD_decompress, ZSTD_getFrameContentSize} = instance.exports;
+const exports = instance.exports as ZstdExports;
+const {memory, malloc, free, ZSTD_compress, ZSTD_decompress, ZSTD_getFrameContentSize} = exports;
+
 const input = "Hello, World!Hello, World!Hello, World!Hello, World!";
 const len = input.length;
 const ptr = malloc(len);

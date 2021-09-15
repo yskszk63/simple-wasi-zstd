@@ -22,4 +22,4 @@ libzstd.wasm: zstd/lib/libzstd.so.1.5.0
 	wasm-opt -Os -o $@ $<
 
 zstd/lib/libzstd.so.1.5.0: zstd/Makefile
-	make -Czstd lib-nomt CC=$(CC) AR=$(AR) LD=$(LD) CFLAGS='$(CFLAGS)' LDFLAGS='$(LDFLAGS)' SONAME_FLAGS='$(SONAME_FLAGS)'
+	$(MAKE) -Czstd lib-nomt CC=$(CC) AR=$(AR) LD=$(LD) CFLAGS='$(CFLAGS)' LDFLAGS='$(LDFLAGS)' SONAME_FLAGS='$(SONAME_FLAGS)'

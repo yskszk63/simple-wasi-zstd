@@ -5,6 +5,7 @@ Simple [zstd](https://github.com/facebook/zstd) library for Node.js / Deno / Bro
 ## Example
 
 - [Node.js example](examples/node.mjs)
+- [Deno example](examples/deno.ts)
 
 ## License
 

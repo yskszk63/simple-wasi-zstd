@@ -1,15 +1,22 @@
 {
   "name": "simple-wasi-zstd",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Simple zstd library for Node.js / Deno / Browser.",
   "module": "libzstd.js",
   "types": "libzstd.d.ts",
   "type": "module",
+  "exports": {
+    ".": {
+      "import": "./libzstd.js"
+    },
+    "./libzstd.wasm": "./libzstd.wasm"
+  },
   "directories": {
     "test": "tests"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "make test",
+    "prepare": "make"
   },
   "repository": {
     "type": "git",

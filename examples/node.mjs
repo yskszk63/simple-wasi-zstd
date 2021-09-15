@@ -1,5 +1,5 @@
 import { WASI } from "wasi";
-import { compile } from "simple-wasi-zstd/libzstd.js";
+import { compile } from "simple-wasi-zstd";
 const wasi = new WASI({});
 
 const instance = await WebAssembly.instantiate(await compile(), {
