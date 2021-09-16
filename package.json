@@ -1,6 +1,6 @@
 {
   "name": "simple-wasi-zstd",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Simple zstd library for Node.js / Deno / Browser.",
   "module": "libzstd.js",
   "types": "libzstd.d.ts",
